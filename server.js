@@ -6,9 +6,16 @@ var requestAsync = Promise.promisify(require('request'));
 
 var app = express();
 
-app.get('/scores', function (req, res) {
+app.get('/sendMe/:addressToCall', function (req, res) {
+  var addressToCall = req.params.addressToCall;
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  res.send(ip);
+  requestAsync("http://" + ip + ':3000/' + addressToCall).then(function (result) {
+    res.send(result.body);
+  });
+});
+
+app.get('/success', function(req, res) {
+  res.send("success");
 });
 
 app.get('/httpsuccess', function (req, res) {
