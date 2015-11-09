@@ -22,7 +22,7 @@ app.get('/pingMe/:ipAddress', function (req, res) {
   var hosts = [ipAddress];
 
   hosts.forEach(function (host) {
-    ping.promise.probe(host)
+    ping.promise.probe(host, {timeout: 10})
       .then(function (pingRes) {
         res.send(pingRes);
       })
