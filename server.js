@@ -1,8 +1,8 @@
 var express = require('express');
 var Promise = require('bluebird');
 var _ = require('lodash');
+var ping = require('ping-wrapper2');
 var requestAsync = Promise.promisify(require('request'));
-
 
 var app = express();
 
@@ -13,6 +13,15 @@ app.get('/sendMe/:addressToCall', function (req, res) {
     res.send(result.body);
   }).catch(function() {
     res.send("timeout ! but ip was " + ip);
+  });
+});
+
+app.get('/pingMe/:ipAddress', function (req, res) {
+  var ipAddress = req.params.ipAddress;
+  var exec = ping("google.com", { count: 1 });
+  exec.on("exit", function(data){
+    // { no: 1, bytes: 64, time: 54, ttl: 1 }
+    res.send(data);
   });
 });
 
