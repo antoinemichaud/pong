@@ -2,10 +2,11 @@
   "name": "pong",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "bluebird": "^3.0.5",
     "express": "^4.13.3",
+    "lodash": "^3.10.1",
     "request": "^2.65.0"
   },
   "devDependencies": {},
