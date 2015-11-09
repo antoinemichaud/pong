@@ -6,8 +6,9 @@
   "dependencies": {
     "bluebird": "^3.0.5",
     "express": "^4.13.3",
+    "jjg-ping": "^1.0.1",
     "lodash": "^3.10.1",
-    "ping-wrapper2": "0.0.5",
+    "ping": "^0.1.10",
     "request": "^2.65.0"
   },
   "devDependencies": {},
